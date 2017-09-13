@@ -1,0 +1,23 @@
+---
+  version: '2.3'
+  services:
+    # image name
+#    tomcatsample1:
+#      build:
+#        context: ./
+#        dockerfile: ./webapp/Dockerfile
+#      container_name: mywebapp
+    nginx:
+      build:
+        context: .
+        dockerfile: ./nginx/Dockerfile
+#      volumes:
+#        - type: bind
+#          source: ./nginx/tomcat.conf
+#          target: /etc/nginx/conf.d/tomcat.conf
+      container_name: mynginx
+      ports: [ "80:80" ]
+#    tomacat1:
+#      build:
+#        context: .
+#        dockerfile: ./tomcat/Dockerfile
