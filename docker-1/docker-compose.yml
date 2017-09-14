@@ -1,11 +1,5 @@
 version: '2'
 services:
-  webapp:
-      build:
-        context: .
-        dockerfile: webapp.Dockerfile
-      hostname: samplewebapp
-      container_name: mywebapp
 
   tomcat:
       build:
@@ -15,12 +9,6 @@ services:
       container_name: tomcat
 #      ports: [ "8080:80" ]
 
-
-
-
-
-
-
   nginx:
     build:
       context: .
@@ -28,3 +16,14 @@ services:
     hostname: kamyshevnginx
     container_name: mynginx
     ports: [ "80:80" ]
+    depends_on:
+      - "webapp"
+
+  webapp:
+      build:
+        context: .
+        dockerfile: webapp.Dockerfile
+      hostname: samplewebapp
+      container_name: mywebapp
+      depends_on:
+        - "tomcat"
