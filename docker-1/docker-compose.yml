@@ -10,14 +10,14 @@ services:
 
 
   nginx:
-    build:
-      context: .
-      dockerfile: ./nginx.Dockerfile
-    container_name: mynginx
-    image: mynginx
-    ports: [ "80:80" ]
-    depends_on:
-      - "webapp"
+      build:
+        context: .
+        dockerfile: ./nginx.Dockerfile
+      container_name: mynginx
+      image: mynginx
+      ports: [ "80:80" ]
+      depends_on:
+        - "webapp"
 
   webapp:
       build:
