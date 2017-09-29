@@ -16,5 +16,5 @@ ADD resources/run.sh /usr/local/bin/run
 #RUN rm -rf /opt/tomcat/webapps/docs /opt/tomcat/webapps/examples /opt/tomcat/webapps/ROOT
 #ADD ./sample.war /opt/tomcat/webapps/sample.war
 
-EXPOSE 8080
+#EXPOSE 8080
 CMD ["/usr/local/bin/run"]
