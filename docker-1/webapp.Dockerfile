@@ -1,2 +1,2 @@
-FROM docker1_tomcat
+FROM mytomcat
 COPY resources/sample.war /opt/tomcat/webapps/sample.war
