@@ -17,4 +17,4 @@ ADD resources/run.sh /usr/local/bin/run
 #ADD ./sample.war /opt/tomcat/webapps/sample.war
 
 #EXPOSE 8080
-CMD chmod 777 /usr/local/bin/run; /usr/local/bin/run
+CMD ["/usr/local/bin/run"]

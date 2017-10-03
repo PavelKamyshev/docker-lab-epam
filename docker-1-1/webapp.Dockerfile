@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM mytomcat1
 MAINTAINER Pavel Kamyshev
 COPY resources/sample.war /opt/tomcat/webapps/sample.war
 VOLUME /opt/tomcat/webapps/

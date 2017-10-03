@@ -1,11 +1,18 @@
 version: '2'
 services:
 
+  tomcat1:
+      build:
+        context: .
+        dockerfile: ./tomcat.Dockerfile
+      image: mytomcat1
+      command: echo
+
   tomcat:
       build:
         context: .
         dockerfile: ./tomcat.Dockerfile
-      image: mytomcat
+      image: mytomcat1
       container_name: mytomcat
       volumes_from:
         - "webapp"
@@ -18,7 +25,7 @@ services:
         context: .
         dockerfile: ./nginx.Dockerfile
       container_name: mynginx
-      image: mynginx
+      image: mynginx1
       ports: [ "80:80" ]
       depends_on:
         - "tomcat"
@@ -28,4 +35,6 @@ services:
         context: .
         dockerfile: ./webapp.Dockerfile
       container_name: mywebapp
-      image: mywebapp
+      image: mywebapp1
+      depends_on:
+        - "tomcat1"
