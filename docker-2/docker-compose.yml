@@ -1,14 +1,28 @@
 version: '2'
 services:
- ansible:
-    build:
-         context: .
-         dockerfile: ansible.Dockerfile
-    container_name: ansible-data
+
+  ansible:
+      build:
+        context: .
+        dockerfile: ansible.Dockerfile
+      container_name: ansible
+      image: myansible
+
+  jenkins:
+      build:
+        context: .
+        dockerfile: jenkins.Dockerfile
+      container_name: jenkins
+      image: myjenkins
+      ports: [ "8980:8080" ]
+  #    volumes_from: [ "gradle" ]
+      depends_on:
+        - "gradle"
 
 
- gradle:
+  gradle:
     build:
-         context: .
-         dockerfile: gradle.Dockerfile
-    container_name: gradle-data
+      context: .
+      dockerfile: gradle.Dockerfile
+    container_name: gradle
+    image: mygradle

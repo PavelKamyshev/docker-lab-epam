@@ -5,14 +5,14 @@ services:
       build:
         context: .
         dockerfile: ./tomcat.Dockerfile
-      image: mytomcat1
+      image: mytomcat
       command: echo
 
   tomcat:
       build:
         context: .
         dockerfile: ./tomcat.Dockerfile
-      image: mytomcat1
+      image: mytomcat
       container_name: mytomcat
       volumes_from:
         - "webapp"
@@ -25,7 +25,7 @@ services:
         context: .
         dockerfile: ./nginx.Dockerfile
       container_name: mynginx
-      image: mynginx1
+      image: mynginx
       ports: [ "80:80" ]
       depends_on:
         - "tomcat"
@@ -35,6 +35,6 @@ services:
         context: .
         dockerfile: ./webapp.Dockerfile
       container_name: mywebapp
-      image: mywebapp1
+      image: mywebapp
       depends_on:
         - "tomcat1"
